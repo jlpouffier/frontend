@@ -249,10 +249,7 @@ export class HaWaDialog extends ScrollableFadeMixin(LitElement) {
             --ha-dialog-border-radius,
             var(--ha-border-radius-3xl)
           );
-          max-width: var(--ha-dialog-max-width, 100vw);
-          max-width: var(--ha-dialog-max-width, 100svw);
-          /* TODO: animate view transition between width changes.
-          Needs https://github.com/home-assistant/frontend/pull/27281 for mixin */
+          max-width: var(--ha-dialog-max-width, var(--safe-width));
         }
         @media (prefers-reduced-motion: reduce) {
           wa-dialog {
@@ -266,7 +263,7 @@ export class HaWaDialog extends ScrollableFadeMixin(LitElement) {
         }
 
         :host([width="large"]) wa-dialog {
-          --width: min(var(--ha-dialog-width-lg, 720px), var(--full-width));
+          --width: min(var(--ha-dialog-width-lg, 1024px), var(--full-width));
         }
 
         :host([width="full"]) wa-dialog {
@@ -279,88 +276,55 @@ export class HaWaDialog extends ScrollableFadeMixin(LitElement) {
           max-width: var(--width, var(--full-width));
           max-height: var(
             --ha-dialog-max-height,
-            calc(100% - var(--ha-space-20))
+            calc(var(--safe-height) - var(--ha-space-20))
           );
           min-height: var(--ha-dialog-min-height);
-          position: var(--dialog-surface-position, relative);
           margin-top: var(--dialog-surface-margin-top, auto);
+          /* Used to offset the dialog from the safe areas when space is limited */
+          transform: translate(
+            calc(
+              var(--safe-area-offset-left, var(--ha-space-0)) - var(
+                  --safe-area-offset-right,
+                  var(--ha-space-0)
+                )
+            ),
+            calc(
+              var(--safe-area-offset-top, var(--ha-space-0)) - var(
+                  --safe-area-offset-bottom,
+                  var(--ha-space-0)
+                )
+            )
+          );
           display: flex;
           flex-direction: column;
           overflow: hidden;
         }
 
         @media all and (max-width: 450px), all and (max-height: 500px) {
-          :host {
+          :host([type="standard"]) {
             --ha-dialog-border-radius: var(--ha-space-0);
-          }
 
-          :host([width="small"]) wa-dialog {
-            --width: min(var(--ha-dialog-width-sm, 320px), var(--full-width));
-          }
+            wa-dialog {
+              /* Make the container fill the whole screen width and not the safe width */
+              --full-width: var(--ha-dialog-width-full, 100vw);
+              --width: var(--full-width);
+            }
 
-          :host([width="large"]) wa-dialog {
-            --width: min(var(--ha-dialog-width-lg, 1024px), var(--full-width));
-          }
-
-          :host([width="full"]) wa-dialog {
-            --width: var(--full-width);
-          }
-
-          wa-dialog::part(dialog) {
-            min-width: var(--width, var(--full-width));
-            max-width: var(--width, var(--full-width));
-            max-height: var(
-              --ha-dialog-max-height,
-              calc(var(--safe-height) - var(--ha-space-20))
-            );
-            min-height: var(--ha-dialog-min-height);
-            margin-top: var(--dialog-surface-margin-top, auto);
-            /* Used to offset the dialog from the safe areas when space is limited */
-            transform: translate(
-              calc(
-                var(--safe-area-offset-left, var(--ha-space-0)) - var(
-                    --safe-area-offset-right,
-                    var(--ha-space-0)
-                  )
-              ),
-              calc(
-                var(--safe-area-offset-top, var(--ha-space-0)) - var(
-                    --safe-area-offset-bottom,
-                    var(--ha-space-0)
-                  )
-              )
-            );
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-          }
-
-          @media all and (max-width: 450px), all and (max-height: 500px) {
-            :host([type="standard"]) {
-              --ha-dialog-border-radius: var(--ha-space-0);
-
-              wa-dialog {
-                /* Make the container fill the whole screen width and not the safe width */
-                --full-width: var(--ha-dialog-width-full, 100vw);
-                --width: var(--full-width);
-              }
-
-              wa-dialog::part(dialog) {
-                /* Make the dialog fill the whole screen height and not the safe height */
-                min-height: var(--ha-dialog-min-height, 100vh);
-                min-height: var(--ha-dialog-min-height, 100dvh);
-                max-height: var(--ha-dialog-max-height, 100vh);
-                max-height: var(--ha-dialog-max-height, 100dvh);
-                margin-top: 0;
-                margin-bottom: 0;
-                /* Use safe area as padding instead of the container size */
-                padding-top: var(--safe-area-inset-top);
-                padding-bottom: var(--safe-area-inset-bottom);
-                padding-left: var(--safe-area-inset-left);
-                padding-right: var(--safe-area-inset-right);
-                /* Reset the transform to center the dialog */
-                transform: none;
-              }
+            wa-dialog::part(dialog) {
+              /* Make the dialog fill the whole screen height and not the safe height */
+              min-height: var(--ha-dialog-min-height, 100vh);
+              min-height: var(--ha-dialog-min-height, 100dvh);
+              max-height: var(--ha-dialog-max-height, 100vh);
+              max-height: var(--ha-dialog-max-height, 100dvh);
+              margin-top: 0;
+              margin-bottom: 0;
+              /* Use safe area as padding instead of the container size */
+              padding-top: var(--safe-area-inset-top);
+              padding-bottom: var(--safe-area-inset-bottom);
+              padding-left: var(--safe-area-inset-left);
+              padding-right: var(--safe-area-inset-right);
+              /* Reset the transform to center the dialog */
+              transform: none;
             }
           }
         }

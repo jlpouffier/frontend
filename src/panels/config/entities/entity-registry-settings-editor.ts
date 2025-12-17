@@ -417,7 +417,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               "ui.dialogs.entity_registry.editor.device_class"
             )}
             naturalMenuWidth
-            fixedMenuPosition
             @selected=${this._switchAsDomainChanged}
             @closed=${stopPropagation}
           >
@@ -454,7 +453,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
                 )}
                 .value=${this._switchAsDomain}
                 naturalMenuWidth
-                fixedMenuPosition
                 @selected=${this._switchAsDomainChanged}
                 @closed=${stopPropagation}
               >
@@ -507,7 +505,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${this._deviceClass}
               naturalMenuWidth
-              fixedMenuPosition
               clearable
               @selected=${this._deviceClassChanged}
               @closed=${stopPropagation}
@@ -554,7 +551,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${stateObj.attributes.unit_of_measurement}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._unitChanged}
               @closed=${stopPropagation}
             >
@@ -609,7 +605,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${stateObj.attributes.unit_of_measurement}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._unitChanged}
               @closed=${stopPropagation}
             >
@@ -637,7 +632,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
                 ? "default"
                 : this._precision.toString()}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._precisionChanged}
               @closed=${stopPropagation}
             >
@@ -670,7 +664,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${this._precipitation_unit}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._precipitationUnitChanged}
               @closed=${stopPropagation}
             >
@@ -686,7 +679,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${this._pressure_unit}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._pressureUnitChanged}
               @closed=${stopPropagation}
             >
@@ -702,7 +694,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${this._temperature_unit}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._temperatureUnitChanged}
               @closed=${stopPropagation}
             >
@@ -718,7 +709,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${this._visibility_unit}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._visibilityUnitChanged}
               @closed=${stopPropagation}
             >
@@ -734,7 +724,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
               )}
               .value=${this._wind_speed_unit}
               naturalMenuWidth
-              fixedMenuPosition
               @selected=${this._windSpeedUnitChanged}
               @closed=${stopPropagation}
             >
@@ -823,7 +812,6 @@ export class EntityRegistrySettingsEditor extends LitElement {
                   "ui.dialogs.entity_registry.editor.stream.stream_orientation"
                 )}
                 naturalMenuWidth
-                fixedMenuPosition
                 .disabled=${this.disabled}
                 @selected=${this._handleCameraOrientationChanged}
                 @closed=${stopPropagation}

@@ -471,7 +471,6 @@ export class MoreInfoDialog extends ScrollableFadeMixin(LitElement) {
                         menu-corner="END"
                         slot="actionItems"
                         @closed=${stopPropagation}
-                        fixed
                       >
                         <ha-icon-button
                           slot="trigger"
@@ -593,7 +592,6 @@ export class MoreInfoDialog extends ScrollableFadeMixin(LitElement) {
                     menu-corner="END"
                     slot="actionItems"
                     @closed=${stopPropagation}
-                    fixed
                   >
                     <ha-icon-button
                       slot="trigger"

@@ -335,8 +335,10 @@ export class StatisticsChart extends LitElement {
       },
       tooltip: {
         trigger: "axis",
+        renderMode: "html",
         position: "bottom",
         align: "center",
+        confine: true,
         formatter: this._renderTooltip,
       },
     };

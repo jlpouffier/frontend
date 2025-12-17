@@ -231,15 +231,7 @@ export class HaWaDialog extends ScrollableFadeMixin(LitElement) {
         wa-dialog {
           --full-width: var(
             --ha-dialog-width-full,
-            min(
-              95vw,
-              calc(
-                100vw - var(--safe-area-inset-left, var(--ha-space-0)) - var(
-                    --safe-area-inset-right,
-                    var(--ha-space-0)
-                  )
-              )
-            )
+            min(95vw, var(--safe-width))
           );
           --width: min(var(--ha-dialog-width-md, 580px), var(--full-width));
           --spacing: var(--dialog-content-padding, var(--ha-space-6));

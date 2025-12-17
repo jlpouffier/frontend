@@ -371,82 +371,79 @@ export class HaWaDialog extends ScrollableFadeMixin(LitElement) {
               }
             }
           }
+        }
 
-          .header-title-container {
-            display: flex;
-            align-items: center;
-          }
+        .header-title-container {
+          display: flex;
+          align-items: center;
+        }
 
-          .header-title {
-            margin: 0;
-            margin-bottom: 0;
-            color: var(
-              --ha-dialog-header-title-color,
-              var(--primary-text-color)
-            );
-            font-size: var(
-              --ha-dialog-header-title-font-size,
-              var(--ha-font-size-2xl)
-            );
-            line-height: var(
-              --ha-dialog-header-title-line-height,
-              var(--ha-line-height-condensed)
-            );
-            font-weight: var(
-              --ha-dialog-header-title-font-weight,
-              var(--ha-font-weight-normal)
-            );
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            margin-right: var(--ha-space-3);
-          }
+        .header-title {
+          margin: 0;
+          margin-bottom: 0;
+          color: var(--ha-dialog-header-title-color, var(--primary-text-color));
+          font-size: var(
+            --ha-dialog-header-title-font-size,
+            var(--ha-font-size-2xl)
+          );
+          line-height: var(
+            --ha-dialog-header-title-line-height,
+            var(--ha-line-height-condensed)
+          );
+          font-weight: var(
+            --ha-dialog-header-title-font-weight,
+            var(--ha-font-weight-normal)
+          );
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          margin-right: var(--ha-space-3);
+        }
 
-          wa-dialog::part(body) {
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-            overflow: hidden;
-          }
+        wa-dialog::part(body) {
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          max-width: 100%;
+          overflow: hidden;
+        }
 
-          .content-wrapper {
-            position: relative;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-          }
+        .content-wrapper {
+          position: relative;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          min-height: 0;
+        }
 
-          .body {
-            position: var(--dialog-content-position, relative);
-            padding: var(
-              --dialog-content-padding,
-              0 var(--ha-space-6) var(--ha-space-6) var(--ha-space-6)
-            );
-            overflow: auto;
-            flex-grow: 1;
-          }
-          :host([flexcontent]) .body {
-            max-width: 100%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-          }
+        .body {
+          position: var(--dialog-content-position, relative);
+          padding: var(
+            --dialog-content-padding,
+            0 var(--ha-space-6) var(--ha-space-6) var(--ha-space-6)
+          );
+          overflow: auto;
+          flex-grow: 1;
+        }
+        :host([flexcontent]) .body {
+          max-width: 100%;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
 
-          wa-dialog::part(footer) {
-            padding: var(--ha-space-0);
-          }
+        wa-dialog::part(footer) {
+          padding: var(--ha-space-0);
+        }
 
-          ::slotted([slot="footer"]) {
-            display: flex;
-            padding: var(--ha-space-3) var(--ha-space-4) var(--ha-space-4)
-              var(--ha-space-4);
-            gap: var(--ha-space-3);
-            justify-content: flex-end;
-            align-items: center;
-            width: 100%;
-          }
+        ::slotted([slot="footer"]) {
+          display: flex;
+          padding: var(--ha-space-3) var(--ha-space-4) var(--ha-space-4)
+            var(--ha-space-4);
+          gap: var(--ha-space-3);
+          justify-content: flex-end;
+          align-items: center;
+          width: 100%;
         }
       `,
     ];

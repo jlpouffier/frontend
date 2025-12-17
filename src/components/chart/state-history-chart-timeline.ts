@@ -255,7 +255,8 @@ export class StateHistoryChartTimeline extends LitElement {
         right: rtl ? labelWidth : 1,
       },
       tooltip: {
-        appendTo: document.body,
+        position: "bottom",
+        align: "center",
         formatter: this._renderTooltip,
       },
     };

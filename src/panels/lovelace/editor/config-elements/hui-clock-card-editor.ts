@@ -280,7 +280,7 @@ export class HuiClockCardEditor
       ] as const satisfies readonly HaFormSchema[]
   );
 
-  private _data = memoizeOne((config) => ({
+  private _data = memoizeOne((config: ClockCardConfig) => ({
     clock_style: "digital",
     clock_size: "small",
     time_zone: "auto",
@@ -388,7 +388,7 @@ export class HuiClockCardEditor
         return this.hass!.localize(
           `ui.panel.lovelace.editor.card.clock.no_background`
         );
-      case "date":  
+      case "date":
         return this.hass!.localize(
           `ui.panel.lovelace.editor.card.clock.date.label`
         );

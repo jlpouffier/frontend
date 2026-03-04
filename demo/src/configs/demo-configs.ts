@@ -9,6 +9,7 @@ export const demoConfigs: (() => Promise<DemoConfig>)[] = [
   () => import("./teachingbirds").then((mod) => mod.demoTeachingbirds),
   () => import("./kernehed").then((mod) => mod.demoKernehed),
   () => import("./jimpower").then((mod) => mod.demoJimpower),
+  () => import("./midgard").then((mod) => mod.demoMidgard),
 ];
 
 // eslint-disable-next-line import/no-mutable-exports
